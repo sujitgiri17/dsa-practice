@@ -1,6 +1,8 @@
 package com.string;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 public class StringProbs {
@@ -193,6 +195,61 @@ public class StringProbs {
 		return -1;
 	}
 	
+	//LinkedHashSet
+	public static void uniqueCharacters(String str5) {
+		LinkedHashSet<Character> set = new LinkedHashSet<>();
+		
+		//programming
+		for(char ch : str5.toCharArray()) {
+			set.add(ch);
+		}
+		
+		for(char ch : set) {
+			System.out.println(ch);
+		}
+	}
+	
+	
+	public static int numJewelsInStones(String jewels, String stones) {
+		HashSet<Character> set = new HashSet<>();
+		int count = 0;
+		for(char ch : jewels.toCharArray()) {
+			set.add(ch);
+		}
+		for(char ch : stones.toCharArray()) {
+			if(set.contains(ch)) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	public static boolean isIsomorphic(String s, String t) {
+		HashMap<Character, Character> map = new HashMap<>();
+		HashMap<Character , Character> map1 = new HashMap<>();
+		
+		for(int i=0;i<s.length();i++) {
+			char ch1 = s.charAt(i);
+			char ch2 = t.charAt(i);
+			
+			if(map.containsKey(ch1)) {
+				if(map.get(ch1)!=ch2) {
+					return false;
+				}
+			}else {
+				map.put(ch1, ch2);
+			}
+			if(map1.containsKey(ch2)) {
+				if(map1.get(ch2)!=ch1) {
+					return false;
+				}
+				}else {
+					map.put(ch2, ch1);
+				}	
+			}
+		return true;
+		}
+	
 
 	public static void main(String[] args) {
 		String str = "JAVA";
@@ -204,7 +261,7 @@ public class StringProbs {
 		String str3 = "madam";
 		palindrome(str3);
 		
-		String str4 = "JaVaPro";
+		String str4 = "JaVaPro";	
 		UpperOrLower(str4);
 		
 		String str5 = "programming";
@@ -229,6 +286,17 @@ public class StringProbs {
 		String stre= "loveleetcode";
 		System.out.println(firstUnique(stre)); 
 		
+		String jewels = "aA";
+		String stones = "aAAbbbb";
+		
+		//LinkedHashSet
+		uniqueCharacters(str5);
+		
+		System.out.println(numJewelsInStones(jewels , stones));
+		
+		String s = "egg";
+		String t = "add";
+		System.out.println(isIsomorphic(s,t));
 
 	}
 }

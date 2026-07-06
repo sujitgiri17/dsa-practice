@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -340,6 +341,18 @@ public class FindLargestEle {
 			}
 			
 		}
+		
+		public static void removeDuplicates(int[] dup) {
+			LinkedHashSet<Integer> set = new LinkedHashSet<>();
+			
+			for(int num : dup) {
+				set.add(num);
+			}
+			
+			for(int num : set) {
+				System.out.println(num);
+			}
+		}
 
 	public static void main(String[] args) {
 		int[] arr = {12,45,7,89,26,56};
@@ -409,6 +422,12 @@ public class FindLargestEle {
 
 		int[] arrr2 = {2,2,4,6};
 		intersection(arrr1,arrr2);
+		
+		//LinkedHashSet
+		removeDuplicates(dup);
+		
+		
+		
 		
 	}
 
