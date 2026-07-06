@@ -1,21 +1,20 @@
-# dsa-practice
-My daily journey of solving Data Structures and Algorithms problems using Java.
+# DSA Practice (Java)
 
-# DSA Practice in Java
-
-This repository contains my daily practice of Data Structures and Algorithms using Java.
+This repository contains my daily Data Structures and Algorithms practice in Java.
 
 ## Topics Covered
 - Arrays
 - Strings
-- Linked Lists
-- Stacks
-- Queues
+- LinkedList
+- Stack
+- Queue
 - Trees
 - Graphs
 - Recursion
 - Dynamic Programming
-- Sorting
-- Searching
 
-🎯 Goal: Solve DSA problems consistently and strengthen problem-solving skills for technical interviews.
+## Goal
+To improve problem-solving skills for coding interviews.
+
+## Progress
+Daily commits added 🚀
