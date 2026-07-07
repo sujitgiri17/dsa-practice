@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
 
 public class FindLargestEle {
 	
@@ -354,6 +355,43 @@ public class FindLargestEle {
 			}
 		}
 
+		public static void sortUnique(int[] treeeS) {
+			TreeSet<Integer> set = new TreeSet<>();
+			for(int num : treeeS) {
+				set.add(num);
+			}
+			for(int num : set) {
+				System.out.println(num);
+				
+			}
+		}
+		
+		public static int secondLlargest(int[] large) {
+			TreeSet<Integer> set = new TreeSet<>();
+			
+			for(int num : large ) {
+				set.add(num);
+			}
+			int largest = set.last();
+			
+			return set.lower(largest);
+		}
+		
+		  public static int thirdMax(int[] nums) {
+		        TreeSet<Integer> set = new TreeSet<>();
+
+		        for(int num : nums){
+		            set.add(num);
+		        }
+		        if(set.size()<3){
+		            return set.last();
+		        }
+		        set.pollLast();
+		        set.pollLast();
+
+		        return set.last();
+		    }
+		  
 	public static void main(String[] args) {
 		int[] arr = {12,45,7,89,26,56};
 		int[] arr2 = {10,20,30,40,50};
@@ -426,8 +464,17 @@ public class FindLargestEle {
 		//LinkedHashSet
 		removeDuplicates(dup);
 		
+		int[] treeeS = {40,10,30,20,10,50};
+		
+		//sortUnique(treeeS);
 		
 		
+		int[] large = {40, 10, 30, 20, 50};
+		System.out.println(secondLlargest(large));
+		
+		
+		int [] nums = {1,2,3,4,5,6};
+		System.out.println(thirdMax(nums));
 		
 	}
 
