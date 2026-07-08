@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 import java.util.TreeSet;
 
 public class FindLargestEle {
@@ -392,6 +393,72 @@ public class FindLargestEle {
 		        return set.last();
 		    }
 		  
+		  //Stack DataStructure
+		  
+		  public static void stackDemo() {
+			  Stack<Integer> stack = new Stack<>();
+			  
+			  stack.push(10);
+			  stack.push(20);
+			  stack.push(30);
+			  
+			  System.out.println(stack);
+			  
+			  System.out.println("Top: "+ stack.peek());
+			  System.out.println("Removed: "+ stack.pop());
+			  
+			  System.out.println(stack);
+		  }
+		  
+		  public static boolean isValid(String s) {
+			  Stack<Character> stack = new Stack<>();
+			  
+			  for(char ch : s.toCharArray()) {
+				  if(ch=='(' || ch=='{' || ch== '[') {
+					  stack.push(ch);
+				  }
+				  else if(ch == ')' || ch == '}' || ch == ']') {
+					  if(stack.isEmpty()) {
+						  return false;
+					  }else if(ch==')' && stack.peek()=='(') {
+						  stack.pop();
+					  }else if(ch=='}' && stack.peek()=='{') {
+						  stack.pop();
+					  }else if(ch==']' && stack.peek()=='[') {
+						  stack.pop();
+					  }else {
+						  return false;
+					  }
+				  }
+			  }
+			  return  stack.isEmpty();
+		  }
+		  
+		  public static int calPoints(String[] operations) {
+			  Stack<Integer> stack = new Stack<>();
+			  
+			  for(String op : operations) {
+				  if(op.equals("C")) {
+					  stack.pop();
+				  }else if(op.equals("D")) {
+					 stack.push(stack.peek()*2);
+				  }else if(op.equals("+")) {
+					  int first = stack.pop();
+					  int second = stack.peek();
+					  
+					  stack.push(first);
+					  stack.push(first+second);
+				  }else {
+					  stack.push(Integer.parseInt(op));
+				  }
+			  }
+			  int sum = 0;
+			  for(int score : stack) {
+				  sum+=score;
+			  }
+			  return sum;
+		  }
+		  
 	public static void main(String[] args) {
 		int[] arr = {12,45,7,89,26,56};
 		int[] arr2 = {10,20,30,40,50};
@@ -475,6 +542,16 @@ public class FindLargestEle {
 		
 		int [] nums = {1,2,3,4,5,6};
 		System.out.println(thirdMax(nums));
+		
+		stackDemo();
+		
+		String s = "()[]{}"; 
+		System.out.println(isValid(s));
+		
+		
+		String[] operations ={"5","2","C","D","+"};
+		System.out.println(calPoints(operations));
+		
 		
 	}
 
