@@ -459,6 +459,30 @@ public class FindLargestEle {
 			  return sum;
 		  }
 		  
+		  public static int[] nextGreaterElement(int[] nums3, int[] nums4) {
+			  Stack<Integer> stack = new Stack<>();
+			  HashMap<Integer,Integer> map = new HashMap<>();
+			  
+			  for(int i=nums4.length-1;i>=0;i--) {
+				  
+				  while(!stack.isEmpty() && stack.peek()<nums4[i]){
+					stack.pop();  
+				  }
+				  
+				  if(stack.isEmpty()) {
+					  map.put(nums4[i],-1);
+				  }else {
+					  map.put(nums4[i], stack.peek());
+				  }
+				  stack.push(nums4[i]);
+			  }
+			  int[] ans = new int[nums3.length];
+			  for(int i=0;i<nums3.length;i++) {
+				  ans[i] = map.get(nums3[i]);
+			  }
+			  return ans;
+		  }
+		  
 	public static void main(String[] args) {
 		int[] arr = {12,45,7,89,26,56};
 		int[] arr2 = {10,20,30,40,50};
@@ -551,6 +575,11 @@ public class FindLargestEle {
 		
 		String[] operations ={"5","2","C","D","+"};
 		System.out.println(calPoints(operations));
+		
+		int[] nums3 = {4,1,2};
+		int[] nums4 = {1,3,4,2};
+		System.out.println(Arrays.toString(nextGreaterElement(nums3,nums4)));
+		
 		
 		
 	}

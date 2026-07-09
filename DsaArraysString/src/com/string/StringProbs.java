@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Stack;
 
 public class StringProbs {
 	
@@ -250,6 +251,51 @@ public class StringProbs {
 		return true;
 		}
 	
+	public static String removeDuplicates(String a) {
+		Stack<Character> stack = new Stack<>();
+		
+		for(char ch : a.toCharArray()) {
+			if(stack.isEmpty()) {
+				stack.push(ch);
+			}else if(stack.peek()==ch) {
+				stack.pop();
+			}else {
+				stack.push(ch);
+			}
+		}
+		StringBuilder st = new StringBuilder();
+		for(char ch : stack) {
+			st.append(ch);
+		}
+		return st.toString();
+	}
+	
+	public static String build(String str) {
+		Stack<Character> stack = new Stack<>();
+		
+		for(char ch : str.toCharArray()) {
+			if(ch != '#') {
+				stack.push(ch);
+			}else {
+				if(!stack.isEmpty()) {
+					stack.pop();
+				}
+			}
+		}
+		StringBuilder st = new StringBuilder();
+		for(char ch : stack) {
+			st.append(ch);
+		}
+		return st.toString();
+	}
+	
+    public static boolean backspaceCompare(String x, String y) {
+    	String first = build(x);
+    	String second = build(y);
+    	
+    	return first.equals(second);
+    }
+
 
 	public static void main(String[] args) {
 		String str = "JAVA";
@@ -297,6 +343,15 @@ public class StringProbs {
 		String s = "egg";
 		String t = "add";
 		System.out.println(isIsomorphic(s,t));
+		
+		String a = "abbaca";
+		System.out.println(removeDuplicates(a));
+		
+		String x = "ab#c";
+		String y = "ab#c";
+		System.out.println(backspaceCompare(x,y));
+		
+		
 
 	}
 }
