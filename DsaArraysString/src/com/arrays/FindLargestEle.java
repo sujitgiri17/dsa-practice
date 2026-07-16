@@ -5,8 +5,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Stack;
 import java.util.TreeSet;
 
@@ -483,6 +485,23 @@ public class FindLargestEle {
 			  return ans;
 		  }
 		  
+		  //Queue
+		  public static void queueDemo() {
+			  Queue<Integer> queue = new LinkedList<>();
+			  
+			  queue.offer(10);
+			  queue.offer(20);
+			  queue.offer(30);
+			  
+			  System.out.println(queue);
+			  
+			  System.out.println(queue.peek());
+			  System.out.println(queue.poll());
+			  System.out.println(queue);
+			  System.out.println(queue.size());
+			  System.out.println(queue.isEmpty());
+		  }
+		  
 	public static void main(String[] args) {
 		int[] arr = {12,45,7,89,26,56};
 		int[] arr2 = {10,20,30,40,50};
@@ -579,6 +598,11 @@ public class FindLargestEle {
 		int[] nums3 = {4,1,2};
 		int[] nums4 = {1,3,4,2};
 		System.out.println(Arrays.toString(nextGreaterElement(nums3,nums4)));
+		
+		
+		//Queue
+		queueDemo();
+		
 		
 		
 		
