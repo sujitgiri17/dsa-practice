@@ -2,12 +2,14 @@ package com.arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 import java.util.TreeSet;
@@ -502,6 +504,54 @@ public class FindLargestEle {
 			  System.out.println(queue.isEmpty());
 		  }
 		  
+		  //Priority Queue
+		  public static void priorityQueueDemo(){
+			  PriorityQueue<Integer> pq = new PriorityQueue<>();
+			  
+			  pq.offer(30);
+			  pq.offer(10);
+			  pq.offer(20);
+			  pq.offer(40);
+			  
+			  System.out.println(pq.peek());
+			  System.out.println(pq.poll());
+			  System.out.println(pq.peek());
+			  System.out.println(pq);
+			    
+		  }
+		 public static int findKthLargest(int[] nums, int k) {
+			        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+
+			        for(int i : nums){
+			            maxHeap.offer(i);
+			        }
+			        for(int i=0;i<k-1;i++){
+			            maxHeap.poll();
+			        }
+			        return maxHeap.peek();
+			    }
+		 
+		 public  static int lastStoneWeight(int[] stones) {
+		       PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+
+		       for(int i : stones){
+		        maxHeap.offer(i);
+		       }
+		       while(maxHeap.size()>1){
+		        int first = maxHeap.poll();
+		        int second = maxHeap.poll();
+		        int reamin = first-second;
+		        if(reamin!=0){
+		            maxHeap.offer(reamin);
+		        }
+		       }
+		       if(maxHeap.isEmpty()){
+		        return 0;
+		       }
+		       return maxHeap.peek();
+
+		    }
+			    
 	public static void main(String[] args) {
 		int[] arr = {12,45,7,89,26,56};
 		int[] arr2 = {10,20,30,40,50};
@@ -544,6 +594,8 @@ public class FindLargestEle {
 		
 		Mappp(arrmap);
 		mappp2();
+		
+		
 		
 		
 		int[] arrrr = {10, 20, 10, 30, 10, 40, 20};
@@ -603,9 +655,17 @@ public class FindLargestEle {
 		//Queue
 		queueDemo();
 		
+		//ProrityQueue
+		priorityQueueDemo();
 		
 		
+		int[] numss = {3,2,1,5,6,4};  
+		int k = 2;
+		System.out.println(findKthLargest(nums, k)); 
 		
+		
+		int[] stones = {2,7,4,1,8,1};
+		System.out.println(lastStoneWeight(stones)); 
 	}
 
 }
