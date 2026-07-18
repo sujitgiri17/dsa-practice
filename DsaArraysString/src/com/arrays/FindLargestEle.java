@@ -551,6 +551,30 @@ public class FindLargestEle {
 		       return maxHeap.peek();
 
 		    }
+		 
+		 public static int[] topKFrequent(int[] nums, int k) {
+
+		        HashMap<Integer, Integer> map = new HashMap<>();
+
+		        for (int num : nums) {
+		            map.put(num, map.getOrDefault(num, 0) + 1);
+		        }
+
+		        PriorityQueue<Map.Entry<Integer, Integer>> pq =
+		                new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());
+
+		        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+		            pq.offer(entry);
+		        }
+
+		        int[] ans = new int[k];
+
+		        for (int i = 0; i < k; i++) {
+		            ans[i] = pq.poll().getKey();
+		        }
+
+		        return ans;
+		    }
 			    
 	public static void main(String[] args) {
 		int[] arr = {12,45,7,89,26,56};
@@ -666,6 +690,10 @@ public class FindLargestEle {
 		
 		int[] stones = {2,7,4,1,8,1};
 		System.out.println(lastStoneWeight(stones)); 
+		
+		int[] freqt = {1,1,1,2,2,3};
+		int kk=2;
+		System.out.println(Arrays.toString(topKFrequent(freqt , kk))) ;
 	}
 
 }
